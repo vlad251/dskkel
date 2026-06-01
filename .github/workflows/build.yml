@@ -1,33 +1,11 @@
-name: Build
-
-on:
-  push:
-    tags:
-      - 'v*'
-
-permissions:
-  contents: write
-
-jobs:
-  build-mac:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
-          
-      - name: Install dependencies
-        run: npm install
-        
-      - name: Build Mac
-        run: npm run dist -- --mac
+- name: Build Mac
+        run: npm run dist -- --mac --publish never
         
       - name: Upload to Release
         uses: softprops/action-gh-release@v1
         with:
-          files: dist/*.dmg
+          files: |
+            dist/*.dmg
+            dist/*.zip
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
