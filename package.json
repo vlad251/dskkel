@@ -1,0 +1,24 @@
+{
+  "name": "kelix-desktop",
+  "version": "1.0.0",
+  "description": "Kelix Trade Desktop App",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win"
+  },
+  "keywords": [],
+  "author": "MRV Software SRL",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^42.3.0",
+    "electron-builder": "^26.8.1"
+  },
+  "build": {
+    "appId": "com.mrvsoftware.kelixtrade",
+    "productName": "Kelix Trade",
+    "win": {
+      "target": "nsis"
+    }
+  }
+}
