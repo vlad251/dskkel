@@ -1,13 +1,10 @@
 name: Build
-
 on:
   push:
     tags:
       - 'v*'
-
 permissions:
   contents: write
-
 jobs:
   build-mac:
     runs-on: macos-latest
@@ -17,19 +14,19 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: 20
           
       - name: Install dependencies
         run: npm install
         
       - name: Build Mac
-        run: npm run dist -- --mac --publish never
+        run: npx electron-builder --mac --publish never
         
       - name: Upload to Release
         uses: softprops/action-gh-release@v1
         with:
           files: |
             dist/*.dmg
-            dist/*.zip
+            dist/latest-mac.yml
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
