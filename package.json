@@ -1,6 +1,6 @@
 {
   "name": "kelix-desktop",
-  "version": "1.0.0",
+  "version": "1.0.5",
   "description": "Kelix Trade Desktop App",
   "main": "main.js",
   "scripts": {
@@ -12,14 +12,25 @@
   "license": "ISC",
   "devDependencies": {
     "electron": "^42.3.0",
-    "electron-builder": "^26.8.1"
+    "electron-builder": "^24.13.3"
   },
   "build": {
     "appId": "com.mrvsoftware.kelixtrade",
     "productName": "Kelix Trade",
+    "publish": {
+      "provider": "github",
+      "owner": "vlad251",
+      "repo": "dskkel"
+    },
     "win": {
       "target": "nsis",
       "icon": "icon.ico"
+    },
+    "mac": {
+      "target": "dmg"
     }
+  },
+  "dependencies": {
+    "electron-updater": "^6.8.9"
   }
 }
